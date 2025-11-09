@@ -22,7 +22,7 @@ export const portfolioData = {
       university: "Purdue University",
       school: "Daniels School of Business",
       location: "West Lafayette, IN",
-      year: "Expected July 2026",
+      year: "Expected December 2026",
       honors: [
         "Recipient of Purdue Graduate Scholarship"
       ]
