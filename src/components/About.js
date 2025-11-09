@@ -77,10 +77,6 @@ const About = () => {
               <span>Email</span>
             </a>
           </div>
-          <div className="scroll-indicator">
-            <span>Scroll Down</span>
-            <div className="scroll-arrow">↓</div>
-          </div>
         </div>
       </div>
     </section>
