@@ -1,0 +1,111 @@
+.experience {
+  background-color: #0f0f0f;
+}
+
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.experience-card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  padding: 2rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.experience-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #4a90e2, #7b68ee);
+  border-radius: 10px 0 0 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(74, 144, 226, 0.2);
+  border-color: #4a90e2;
+}
+
+.experience-card:hover::before {
+  opacity: 1;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.job-title {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+.period {
+  color: #7b68ee;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.company {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #4a90e2;
+  font-weight: 600;
+}
+
+.job-description {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.job-description li {
+  color: #c0c0c0;
+  line-height: 1.8;
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.job-description li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: #4a90e2;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .experience-card {
+    padding: 1.5rem;
+  }
+
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .job-title {
+    font-size: 1.3rem;
+  }
+
+  .company {
+    font-size: 1.1rem;
+  }
+}
+
