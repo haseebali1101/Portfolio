@@ -6,9 +6,9 @@ export const portfolioData = {
     name: "Haseeb Ali",
     title: "DevOps Engineer & Software Developer",
     description: "Passionate about building scalable solutions and automating infrastructure. Experienced in cloud technologies, containerization, and continuous integration/deployment pipelines.",
-    email: "haseeb@example.com",
-    linkedin: "https://linkedin.com",
-    github: "https://github.com"
+    email: "haseebali1102@gmail.com",
+    linkedin: "https://www.linkedin.com/in/haseebali2/",
+    github: "https://github.com/haseebali1101"
   },
   education: [
     {
