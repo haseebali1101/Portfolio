@@ -56,7 +56,7 @@ const Header = () => {
               className={activeSection === 'about' ? 'active' : ''}
               onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
             >
-              About
+              Home
             </a>
           </li>
           <li>

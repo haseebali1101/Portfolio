@@ -18,9 +18,15 @@ const Contact = () => {
             <span className="contact-label">Email</span>
             <span className="contact-value">{personal.email}</span>
           </a>
+          {personal.phone && (
+            <a href={`tel:${personal.phone}`} className="contact-item">
+              <span className="contact-label">Phone</span>
+              <span className="contact-value">{personal.phone}</span>
+            </a>
+          )}
           <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="contact-item">
             <span className="contact-label">LinkedIn</span>
-            <span className="contact-value">{personal.linkedin.replace('https://', '')}</span>
+            <span className="contact-value">{personal.linkedin.replace('https://www.', '').replace('https://', '')}</span>
           </a>
           <a href={personal.github} target="_blank" rel="noopener noreferrer" className="contact-item">
             <span className="contact-label">GitHub</span>

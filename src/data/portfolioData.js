@@ -83,17 +83,29 @@ export const portfolioData = {
   ],
   
   skills: {
-    "Analytics & BI Tools": [
-      "Power BI", "SAP", "SPSS", "MS Excel VBA", "Data Analysis"
-    ],
-    "Programming & Technical": [
-      "Python", "SQL", "Financial Modeling", "Investment Analysis"
-    ],
-    "Business & Operations": [
-      "Sales Operations", "Supply Chain Management", "Financial Analysis",
-      "KPI Management", "Performance Analytics", "Demand Planning",
-      "Client Relationship Management", "Cash Flow Management"
-    ],
+    "Analytics & BI Tools": {
+      "Power BI": 90,
+      "SAP": 85,
+      "SPSS": 75,
+      "MS Excel VBA": 88,
+      "Data Analysis": 90
+    },
+    "Programming & Technical": {
+      "Python": 80,
+      "SQL": 85,
+      "Financial Modeling": 90,
+      "Investment Analysis": 85
+    },
+    "Business & Operations": {
+      "Sales Operations": 95,
+      "Supply Chain Management": 85,
+      "Financial Analysis": 90,
+      "KPI Management": 92,
+      "Performance Analytics": 88,
+      "Demand Planning": 85,
+      "Client Relationship Management": 90,
+      "Cash Flow Management": 88
+    },
     "Certifications": [
       "Excel Skills for Business - Macquarie University",
       "Introduction to Financial Markets - Indian School of Business",
@@ -107,25 +119,28 @@ export const portfolioData = {
       title: "Power BI Sales Dashboard Development",
       description: "Developed comprehensive Power BI dashboards to track food portfolio performance metrics, enabling data-driven decision making across regional sales teams and improving visibility into key performance indicators.",
       technologies: ["Power BI", "SAP", "Data Visualization", "Sales Analytics"],
-      impact: "Enhanced visibility and streamlined reporting processes for leadership"
+      impact: "Enhanced visibility and streamlined reporting processes for leadership",
+      github: "https://github.com/haseebali1101",
+      demo: null,
+      image: null
     },
     {
       title: "Portfolio Management & Growth Strategy",
       description: "Managed 200+ B2B accounts achieving consistent 10% month-over-month growth through strategic account management, KPI tracking, and data-driven sales coaching methodologies.",
       technologies: ["CRM", "Sales Analytics", "Performance Management", "KPI Tracking"],
-      impact: "$500K+ monthly turnover with double-digit growth rates"
+      impact: "$500K+ monthly turnover with double-digit growth rates",
+      github: "https://github.com/haseebali1101",
+      demo: null,
+      image: null
     },
     {
       title: "SAP Sales Data Integration",
       description: "Created and modified distributor codes in SAP system to ensure accurate tracking of sales data and performance across multiple distribution channels, improving data accuracy and operational efficiency.",
       technologies: ["SAP", "Data Management", "Process Optimization"],
-      impact: "Improved data accuracy and sales tracking efficiency"
-    },
-    {
-      title: "Supply Chain Coordination System",
-      description: "Coordinated with supply chain teams to optimize SKU delivery timing and improve order fulfillment accuracy, resulting in enhanced operational efficiency and customer satisfaction.",
-      technologies: ["Supply Chain Management", "Inventory Management", "Operations Analytics"],
-      impact: "Improved order fulfillment accuracy and delivery efficiency"
+      impact: "Improved data accuracy and sales tracking efficiency",
+      github: "https://github.com/haseebali1101",
+      demo: null,
+      image: null
     }
   ],
   
