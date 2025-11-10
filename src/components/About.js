@@ -1,20 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './About.css';
 import { portfolioData } from '../data/portfolioData';
 
 const About = () => {
   const { personal } = portfolioData;
+  const [typedText, setTypedText] = useState('');
+  const fullText = personal.title;
+
+  useEffect(() => {
+    if (!fullText) return;
+    
+    let index = 0;
+    setTypedText(''); // Reset on mount
+    
+    const typingInterval = setInterval(() => {
+      if (index < fullText.length) {
+        setTypedText(fullText.substring(0, index + 1));
+        index++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 100);
+
+    return () => clearInterval(typingInterval);
+  }, [fullText]);
   
   return (
     <section id="about" className="about">
-      <div className="about-background"></div>
       <div className="about-container">
         <div className="about-content">
+          <div className="greeting">Hi, my name is</div>
           <h1 className="name">
             <span className="name-first">{personal.name.split(' ')[0]}</span>
             <span className="name-last"> {personal.name.split(' ').slice(1).join(' ')}</span>
           </h1>
-          <h2 className="title">{personal.title}</h2>
+          <h2 className="title">
+            <span className="typed-text">{typedText}</span>
+            <span className="cursor">|</span>
+          </h2>
           <p className="description">
             {personal.description}
           </p>

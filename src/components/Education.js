@@ -6,7 +6,7 @@ const Education = () => {
   const { education } = portfolioData;
 
   return (
-    <section id="education" className="education" data-scroll data-scroll-speed="0.5">
+    <section id="education" className="education">
       <h2 className="section-title">Education</h2>
       <div className="education-container">
         {education.map((edu, index) => (

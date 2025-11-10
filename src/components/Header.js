@@ -8,12 +8,11 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
-      setIsScrolled(scrollY > 50);
+      setIsScrolled(window.scrollY > 50);
       
       // Update active section based on scroll position
       const sections = ['about', 'education', 'experience', 'skills', 'projects', 'contact'];
-      const scrollPosition = scrollY + 100;
+      const scrollPosition = window.scrollY + 100;
       
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -28,35 +27,14 @@ const Header = () => {
       }
     };
     
-    // Listen to both native scroll and Lenis scroll
     window.addEventListener('scroll', handleScroll);
-    
-    // Also listen to Lenis scroll events if available
-    if (window.lenis) {
-      window.lenis.on('scroll', handleScroll);
-    }
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (window.lenis) {
-        window.lenis.off('scroll', handleScroll);
-      }
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      // Use Lenis smooth scroll if available, otherwise fallback to native
-      const lenis = window.lenis;
-      if (lenis) {
-        lenis.scrollTo(element, {
-          offset: -80,
-          duration: 1.2,
-        });
-      } else {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      element.scrollIntoView({ behavior: 'smooth' });
       setIsMobileMenuOpen(false);
     }
   };

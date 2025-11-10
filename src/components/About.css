@@ -4,33 +4,21 @@
   align-items: center;
   justify-content: center;
   padding-top: 80px;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
   position: relative;
   overflow: hidden;
 }
 
-.about-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('/backdrop.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  z-index: 0;
-}
-
-.about-background::after {
+.about::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 10, 10, 0.85);
-  z-index: 1;
+  background: radial-gradient(circle at 20% 50%, rgba(74, 144, 226, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(123, 104, 238, 0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .about-container {
@@ -38,13 +26,23 @@
   max-width: 900px;
   padding: 2rem;
   position: relative;
-  z-index: 2;
+  z-index: 1;
+}
+
+.greeting {
+  font-size: 1.2rem;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  animation: fadeInUp 0.8s ease;
+  font-family: 'Fira Code', monospace;
 }
 
 .name {
   font-size: 5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   line-height: 1.1;
+  animation: fadeInUp 0.8s ease 0.2s both;
   font-weight: 700;
 }
 
@@ -60,10 +58,27 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 2rem;
   color: var(--text-secondary);
   font-weight: 600;
+  min-height: 4rem;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.typed-text {
+  color: var(--text-secondary);
+}
+
+.cursor {
+  color: var(--accent-primary);
+  animation: blink 1s infinite;
+  margin-left: 5px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
 .description {
@@ -72,12 +87,14 @@
   color: var(--text-secondary);
   margin-bottom: 3rem;
   max-width: 600px;
+  animation: fadeInUp 0.8s ease 0.6s both;
 }
 
 .social-links {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease 0.8s both;
 }
 
 .social-link {
@@ -144,12 +161,17 @@
     text-align: center;
   }
 
+  .greeting {
+    font-size: 1rem;
+  }
+
   .name {
     font-size: 3rem;
   }
 
   .title {
     font-size: 1.8rem;
+    min-height: 3rem;
   }
 
   .description {

@@ -37,27 +37,7 @@ code {
 }
 
 html {
-  scroll-behavior: auto;
-}
-
-html.lenis {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-scroll-container] {
-  overflow: hidden;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+  scroll-behavior: smooth;
 }
 
 /* Scrollbar Styling */
