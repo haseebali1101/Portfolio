@@ -11,12 +11,12 @@
   --text-primary: #f6f2e9;
   --text-secondary: #e3d7c5;
   --text-muted: #c2b59b;
-  --accent-primary: #d8a642;
-  --accent-secondary: #f2ce78;
-  --accent-gradient: linear-gradient(135deg, #d8a642 0%, #f2ce78 100%);
+  --accent-primary: #cda349;
+  --accent-secondary: #f1d27a;
+  --accent-gradient: linear-gradient(135deg, #cda349 0%, #f1d27a 100%);
   --border-color: rgba(240, 222, 193, 0.18);
   --shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
-  --shadow-hover: 0 18px 55px rgba(216, 166, 66, 0.26);
+  --shadow-hover: 0 18px 55px rgba(205, 163, 73, 0.26);
   --app-background-image: none;
 }
 
@@ -88,5 +88,15 @@ html.lenis {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-secondary);
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-secondary);
 }
 
