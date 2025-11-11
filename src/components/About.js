@@ -4,13 +4,28 @@ import { portfolioData } from '../data/portfolioData';
 
 const About = () => {
   const { personal } = portfolioData;
+  const photoSrc = personal.photo
+    ? personal.photo.startsWith('http')
+      ? personal.photo
+      : `${process.env.PUBLIC_URL}${personal.photo.startsWith('/') ? personal.photo : `/${personal.photo}`}`
+    : null;
+
   return (
     <section id="about" className="about">
       <div className="about-container">
         <div className="about-content">
-          <div className="about-photo">
-            <img src="/profile.jpg" alt={`${personal.name} portrait`} />
-          </div>
+          {photoSrc ? (
+            <div className="about-photo">
+              <img
+                src={photoSrc}
+                alt={`${personal.name} portrait`}
+                onError={(event) => {
+                  event.currentTarget.style.display = 'none';
+                  event.currentTarget.parentElement?.classList.add('about-photo--placeholder');
+                }}
+              />
+            </div>
+          ) : null}
           <div className="about-text">
             <h1 className="name">
               <span className="name-first">{personal.name.split(' ')[0]}</span>
@@ -21,9 +36,9 @@ const About = () => {
               {personal.description}
             </p>
             <div className="social-links">
-              <a 
-                href={personal.linkedin} 
-                target="_blank" 
+              <a
+                href={personal.linkedin}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="social-link linkedin"
                 aria-label="LinkedIn"
@@ -33,9 +48,9 @@ const About = () => {
                 </svg>
                 <span>LinkedIn</span>
               </a>
-              <a 
-                href={personal.github} 
-                target="_blank" 
+              <a
+                href={personal.github}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="social-link github"
                 aria-label="GitHub"
@@ -45,7 +60,7 @@ const About = () => {
                 </svg>
                 <span>GitHub</span>
               </a>
-              <a 
+              <a
                 href={`mailto:${personal.email}`}
                 className="social-link email"
                 aria-label="Email"

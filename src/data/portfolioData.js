@@ -13,7 +13,8 @@ export const portfolioData = {
     phone: "765-543-4869",
     location: "West Lafayette, IN",
     linkedin: "https://www.linkedin.com/in/haseebali2/",
-    github: "https://github.com/haseebali1101"
+    github: "https://github.com/haseebali1101",
+    photo: "/profile.jpg"
   },
   
   education: [
