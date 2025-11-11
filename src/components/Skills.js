@@ -43,7 +43,12 @@ const Skills = () => {
 
 
   return (
-    <section id="skills" className="skills" ref={sectionRef}>
+    <section
+      id="skills"
+      className="skills"
+      data-parallax-speed="0.2"
+      ref={sectionRef}
+    >
       <h2 className="section-title">Skills & Expertise</h2>
       <div className="skills-container">
         {skillCategories.map((category, index) => (

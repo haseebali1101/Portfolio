@@ -1,6 +1,8 @@
 .experience {
   background-color: var(--bg-primary);
   position: relative;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .experience-container {

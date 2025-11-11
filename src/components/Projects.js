@@ -6,7 +6,11 @@ const Projects = () => {
   const { projects } = portfolioData;
 
   return (
-    <section id="projects" className="projects">
+    <section
+      id="projects"
+      className="projects"
+      data-parallax-speed="0.24"
+    >
       <h2 className="section-title">Projects & Achievements</h2>
       <div className="projects-container">
         {projects.map((project, index) => (

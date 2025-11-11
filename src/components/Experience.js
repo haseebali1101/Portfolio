@@ -6,7 +6,11 @@ const Experience = () => {
   const { experience: experiences } = portfolioData;
 
   return (
-    <section id="experience" className="experience">
+    <section
+      id="experience"
+      className="experience"
+      data-parallax-speed="0.22"
+    >
       <h2 className="section-title">Experience</h2>
       <div className="experience-container">
         {experiences.map((exp, index) => (

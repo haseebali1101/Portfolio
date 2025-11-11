@@ -6,7 +6,11 @@ const Education = () => {
   const { education } = portfolioData;
 
   return (
-    <section id="education" className="education">
+    <section
+      id="education"
+      className="education"
+      data-parallax-speed="0.18"
+    >
       <h2 className="section-title">Education</h2>
       <div className="education-container">
         {education.map((edu, index) => (

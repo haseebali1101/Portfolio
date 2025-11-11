@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Header.css';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
+  const lenisRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      
-      // Update active section based on scroll position
-      const sections = ['about', 'education', 'experience', 'skills', 'projects', 'contact'];
-      const scrollPosition = window.scrollY + 100;
-      
+    const sections = ['about', 'education', 'experience', 'skills', 'projects', 'contact'];
+
+    const updateActiveSection = (scrollValue) => {
+      const scrollPosition = scrollValue + 120;
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -21,22 +20,68 @@ const Header = () => {
           const offsetBottom = offsetTop + element.offsetHeight;
           if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
             setActiveSection(section);
-            break;
+            return;
           }
         }
       }
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const handleScroll = () => {
+      const currentScroll = lenisRef.current ? lenisRef.current.scroll : window.scrollY;
+      setIsScrolled(currentScroll > 50);
+      updateActiveSection(currentScroll);
+    };
+
+    const onNativeScroll = () => {
+      if (!lenisRef.current) {
+        handleScroll();
+      }
+    };
+
+    const attachLenis = (lenisInstance) => {
+      if (!lenisInstance) return;
+      if (lenisRef.current === lenisInstance) return;
+      if (lenisRef.current) {
+        lenisRef.current.off('scroll', handleScroll);
+      }
+      lenisRef.current = lenisInstance;
+      lenisRef.current.on('scroll', handleScroll);
+      handleScroll();
+    };
+
+    if (window.lenis) {
+      attachLenis(window.lenis);
+    }
+
+    const handleLenisReady = (event) => {
+      attachLenis(event.detail);
+    };
+
+    window.addEventListener('scroll', onNativeScroll);
+    window.addEventListener('lenisReady', handleLenisReady);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', onNativeScroll);
+      window.removeEventListener('lenisReady', handleLenisReady);
+      if (lenisRef.current) {
+        lenisRef.current.off('scroll', handleScroll);
+        lenisRef.current = null;
+      }
+    };
   }, []);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
-    if (element) {
+    if (!element) return;
+
+    const lenisInstance = window.lenis;
+    if (lenisInstance) {
+      lenisInstance.scrollTo(element, { offset: -80, duration: 1.1 });
+    } else {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
     }
+    setIsMobileMenuOpen(false);
   };
 
   const toggleMobileMenu = () => {
