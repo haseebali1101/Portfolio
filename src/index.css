@@ -5,18 +5,18 @@
 }
 
 :root {
-  --bg-primary: rgba(15, 15, 15, 0.85);
-  --bg-secondary: rgba(18, 18, 18, 0.78);
-  --bg-tertiary: rgba(22, 22, 22, 0.78);
-  --text-primary: #f6f3ee;
-  --text-secondary: #d8d2c4;
-  --text-muted: #a89f8f;
-  --accent-primary: #d4a23a;
-  --accent-secondary: #f0c86e;
-  --accent-gradient: linear-gradient(135deg, #d4a23a 0%, #f0c86e 100%);
-  --border-color: rgba(244, 235, 213, 0.12);
-  --shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
-  --shadow-hover: 0 18px 55px rgba(212, 162, 58, 0.28);
+  --bg-primary: rgba(18, 16, 12, 0.68);
+  --bg-secondary: rgba(20, 18, 14, 0.6);
+  --bg-tertiary: rgba(24, 20, 16, 0.58);
+  --text-primary: #f6f2e9;
+  --text-secondary: #e3d7c5;
+  --text-muted: #c2b59b;
+  --accent-primary: #d8a642;
+  --accent-secondary: #f2ce78;
+  --accent-gradient: linear-gradient(135deg, #d8a642 0%, #f2ce78 100%);
+  --border-color: rgba(240, 222, 193, 0.18);
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+  --shadow-hover: 0 18px 55px rgba(216, 166, 66, 0.26);
   --app-background-image: none;
 }
 
@@ -38,7 +38,7 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(12, 12, 12, 0.82), rgba(12, 12, 12, 0.92));
+  background: linear-gradient(to bottom, rgba(12, 10, 8, 0.52), rgba(12, 10, 8, 0.74));
   pointer-events: none;
   z-index: -1;
 }
