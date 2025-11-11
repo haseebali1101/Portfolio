@@ -6,7 +6,6 @@ const About = () => {
   const { personal } = portfolioData;
   return (
     <section id="about" className="about">
-      <div className="about-background" />
       <div className="about-container">
         <div className="about-content">
           <h1 className="name">
