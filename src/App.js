@@ -14,8 +14,11 @@ function App() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.0, // Reduced from 1.2s for snappier wheel scrolling
+      easing: (t) => {
+        // Faster, more responsive easing function
+        return 1 - Math.pow(1 - t, 3); // ease-out-cubic
+      },
       smoothWheel: true,
       smoothTouch: false,
       touchMultiplier: 1.6,

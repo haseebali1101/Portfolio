@@ -10,7 +10,7 @@ section {
   max-width: 1200px;
   margin: 0 auto 400px auto;
   position: relative;
-  will-change: transform;
+  will-change: transform, scroll-position;
   /* Account for fixed header when scrolling to sections */
   scroll-margin-top: 100px;
   /* Create stacking context and contain gradients */
@@ -21,6 +21,9 @@ section {
   /* Ensure backgrounds scroll with content, not fixed */
   background-attachment: scroll;
   background-clip: padding-box;
+  /* Optimize scroll performance */
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
 }
 
 .section-title {

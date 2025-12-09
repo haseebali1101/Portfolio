@@ -104,13 +104,16 @@ const Header = () => {
 
       const lenisInstance = window.lenis;
       if (lenisInstance) {
-        // Scroll to the calculated position using Lenis
+        // Scroll to the calculated position using Lenis with faster, snappier animation
         lenisInstance.scrollTo(targetPosition, { 
-          duration: 1.2,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+          duration: 0.7, // Reduced from 1.2s to 700ms for snappier feel
+          easing: (t) => {
+            // Custom easing: ease-out-cubic for smooth, responsive feel
+            return 1 - Math.pow(1 - t, 3);
+          }
         });
       } else {
-        // For native scroll, use the calculated position
+        // For native scroll, use the calculated position with smooth behavior
         window.scrollTo({
           top: targetPosition,
           behavior: 'smooth'
