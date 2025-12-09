@@ -8,7 +8,7 @@
 section {
   padding: 180px 20px;
   max-width: 1200px;
-  margin: 0 auto 200px auto;
+  margin: 0 auto 400px auto;
   position: relative;
   will-change: transform;
   /* Account for fixed header when scrolling to sections */
@@ -54,7 +54,7 @@ section {
   
   section {
     padding: 130px 15px;
-    margin: 0 auto 140px auto;
+    margin: 0 auto 280px auto;
     /* Smaller scroll margin for mobile header */
     scroll-margin-top: var(--header-height, 70px);
   }
