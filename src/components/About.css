@@ -7,6 +7,9 @@
   position: relative;
   overflow: hidden;
   background: linear-gradient(180deg, rgba(20, 18, 14, 0.38) 0%, rgba(18, 16, 12, 0.22) 50%, rgba(20, 18, 14, 0.38) 100%);
+  /* Ensure proper stacking and containment */
+  z-index: 1;
+  isolation: isolate;
 }
 
 .about::before {

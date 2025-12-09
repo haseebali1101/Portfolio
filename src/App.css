@@ -13,6 +13,11 @@ section {
   will-change: transform;
   /* Account for fixed header when scrolling to sections */
   scroll-margin-top: var(--header-height, 80px);
+  /* Create stacking context and contain gradients */
+  z-index: 1;
+  isolation: isolate;
+  /* Ensure gradients don't bleed */
+  overflow: visible;
 }
 
 .section-title {
