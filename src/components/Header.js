@@ -11,7 +11,10 @@ const Header = () => {
     const sections = ['about', 'education', 'experience', 'skills', 'projects', 'contact'];
 
     const updateActiveSection = (scrollValue) => {
-      const scrollPosition = scrollValue + 120;
+      // Dynamically get header height for accurate section detection
+      const header = document.querySelector('.header');
+      const headerHeight = header ? header.offsetHeight : 80;
+      const scrollPosition = scrollValue + headerHeight + 40; // Add small buffer for better detection
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -75,11 +78,22 @@ const Header = () => {
     const element = document.getElementById(id);
     if (!element) return;
 
+    // Dynamically calculate header height to account for different screen sizes
+    const header = document.querySelector('.header');
+    const headerHeight = header ? header.offsetHeight : 80;
+
     const lenisInstance = window.lenis;
     if (lenisInstance) {
-      lenisInstance.scrollTo(element, { offset: -80, duration: 1.1 });
+      // Use negative offset equal to header height for accurate positioning
+      lenisInstance.scrollTo(element, { offset: -headerHeight, duration: 1.1 });
     } else {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // For native scroll, calculate the target position manually
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
     setIsMobileMenuOpen(false);
   };

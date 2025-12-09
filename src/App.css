@@ -11,6 +11,8 @@ section {
   margin: 0 auto 200px auto;
   position: relative;
   will-change: transform;
+  /* Account for fixed header when scrolling to sections */
+  scroll-margin-top: 80px;
 }
 
 .section-title {
@@ -41,6 +43,8 @@ section {
   section {
     padding: 130px 15px;
     margin: 0 auto 140px auto;
+    /* Smaller scroll margin for mobile header */
+    scroll-margin-top: 70px;
   }
 
   .section-title {
