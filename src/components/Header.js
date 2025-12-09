@@ -78,24 +78,39 @@ const Header = () => {
     const element = document.getElementById(id);
     if (!element) return;
 
-    // Dynamically calculate header height to account for different screen sizes
-    const header = document.querySelector('.header');
-    const headerHeight = header ? header.offsetHeight : 80;
-
-    const lenisInstance = window.lenis;
-    if (lenisInstance) {
-      // Use negative offset equal to header height for accurate positioning
-      lenisInstance.scrollTo(element, { offset: -headerHeight, duration: 1.1 });
-    } else {
-      // For native scroll, calculate the target position manually
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - headerHeight;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
     setIsMobileMenuOpen(false);
+
+    // Small delay to ensure mobile menu closes and DOM is stable
+    setTimeout(() => {
+      // Dynamically calculate header height to account for different screen sizes
+      const header = document.querySelector('.header');
+      const headerHeight = header ? header.offsetHeight : 80;
+
+      // Calculate element's absolute position from top of document
+      // Using getBoundingClientRect which is more reliable with transforms/parallax
+      const rect = element.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+      const elementTop = rect.top + scrollTop;
+      
+      // Calculate target position accounting for header height
+      // Add a small buffer (20px) to ensure section title is fully visible below header
+      const targetPosition = Math.max(0, elementTop - headerHeight - 20);
+
+      const lenisInstance = window.lenis;
+      if (lenisInstance) {
+        // Scroll to the calculated position using Lenis
+        lenisInstance.scrollTo(targetPosition, { 
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+      } else {
+        // For native scroll, use the calculated position
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   const toggleMobileMenu = () => {
