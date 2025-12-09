@@ -10,6 +10,9 @@
   /* Ensure proper stacking and containment */
   z-index: 1;
   isolation: isolate;
+  /* Contain background within section boundaries */
+  background-attachment: scroll;
+  background-clip: padding-box;
 }
 
 .about::before {

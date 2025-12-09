@@ -6,7 +6,10 @@
   /* Ensure proper stacking and containment */
   z-index: 1;
   isolation: isolate;
-  overflow: visible;
+  overflow: hidden;
+  /* Contain background within section boundaries */
+  background-attachment: scroll;
+  background-clip: padding-box;
 }
 
 .skills-container {

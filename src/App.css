@@ -16,8 +16,11 @@ section {
   /* Create stacking context and contain gradients */
   z-index: 1;
   isolation: isolate;
-  /* Ensure gradients don't bleed */
-  overflow: visible;
+  /* Contain backgrounds and prevent bleeding */
+  overflow: hidden;
+  /* Ensure backgrounds scroll with content, not fixed */
+  background-attachment: scroll;
+  background-clip: padding-box;
 }
 
 .section-title {
