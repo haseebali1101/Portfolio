@@ -81,46 +81,42 @@ const Header = () => {
     setIsMobileMenuOpen(false);
 
     // Small delay to ensure mobile menu closes and DOM is stable
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        // Dynamically calculate header height to account for different screen sizes
-        const header = document.querySelector('.header');
-        const headerHeight = header ? header.offsetHeight : 80;
+    setTimeout(() => {
+      // Dynamically calculate header height to account for different screen sizes
+      const header = document.querySelector('.header');
+      const headerHeight = header ? header.offsetHeight : 100;
 
-        // Get current scroll position - use Lenis scroll if available, otherwise native scroll
-        const lenisInstance = window.lenis;
-        let currentScroll = 0;
-        
-        if (lenisInstance && lenisInstance.scroll !== undefined) {
-          currentScroll = lenisInstance.scroll;
-        } else {
-          currentScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
-        }
+      // Use offsetTop for reliable absolute positioning from document top
+      // offsetTop gives position relative to offsetParent, which is usually the body
+      // This is more reliable than getBoundingClientRect when transforms are involved
+      let elementTop = 0;
+      let currentElement = element;
+      
+      // Calculate absolute position by summing offsetTop values up the chain
+      while (currentElement) {
+        elementTop += currentElement.offsetTop;
+        currentElement = currentElement.offsetParent;
+      }
+      
+      // Calculate target position: element top minus header height
+      // This places the section heading just below the fixed header
+      const targetPosition = Math.max(0, elementTop - headerHeight);
 
-        // Calculate element's position relative to document top
-        // getBoundingClientRect gives viewport-relative position, so add scroll offset
-        const rect = element.getBoundingClientRect();
-        const elementTop = rect.top + currentScroll;
-        
-        // Calculate target position accounting for header height
-        // Add a small buffer (10px) to ensure section title is fully visible below header
-        const targetPosition = Math.max(0, elementTop - headerHeight - 10);
-
-        if (lenisInstance) {
-          // Scroll to the calculated position using Lenis
-          lenisInstance.scrollTo(targetPosition, { 
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-          });
-        } else {
-          // For native scroll, use the calculated position
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
+      const lenisInstance = window.lenis;
+      if (lenisInstance) {
+        // Scroll to the calculated position using Lenis
+        lenisInstance.scrollTo(targetPosition, { 
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+      } else {
+        // For native scroll, use the calculated position
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   const toggleMobileMenu = () => {
