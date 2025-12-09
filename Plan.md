@@ -10,7 +10,7 @@ This file documents the key steps taken to assemble and deploy the portfolio web
 ## 2) Content Architecture
 - Centralized all portfolio data in `src/data/portfolioData.js` for easy updates (personal info, education, experience, skills, projects, interests, career objective).
 - Defined reusable section components in `src/components` (About, Education, Experience, Skills, Projects, Contact, Header).
-- Wired components in `src/App.js` to render the single-page layout.
+- Wired components in `src/App.js` to render the single-page layout
 
 ## 3) Layout & Navigation
 - Built `Header` with smooth-scroll navigation, active-section tracking, and mobile menu toggle.
