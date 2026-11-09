@@ -56,7 +56,7 @@
   .portrait-box{position:relative}
 
   /* stats */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:72px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:72px}
   .stat{padding:28px 20px;border-right:1px solid var(--line)}
   .stat:last-child{border-right:0}
   .stat b{display:block;font-family:Fraunces,serif;font-size:34px;font-weight:600}
@@ -152,9 +152,9 @@
     .portrait-box{max-width:360px}
     .skills{grid-template-columns:repeat(2,1fr)}
     .certs{grid-template-columns:repeat(2,1fr)}
-    .stats{grid-template-columns:repeat(2,1fr)}
-    .stat:nth-child(2){border-right:0}
-    .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .stats{grid-template-columns:1fr}
+    .stat{border-right:0;border-bottom:1px solid var(--line)}
+    .stat:last-child{border-bottom:0}
     .grid{grid-template-columns:1fr}
     .job{grid-template-columns:1fr;gap:12px}
     .links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--bg);flex-direction:column;padding:20px;border-bottom:1px solid var(--line)}
@@ -206,7 +206,6 @@
     <div class="stats reveal">
       <div class="stat"><b>3 yrs</b><span>Industry experience in FMCG and banking</span></div>
       <div class="stat"><b>7+ yrs</b><span>Working with statistical forecasting</span></div>
-      <div class="stat"><b>All</b><span>Unilever categories now on a dashboard I built</span></div>
       <div class="stat"><b>5</b><span>Certifications across BI, cloud and AI</span></div>
     </div>
   </div>
